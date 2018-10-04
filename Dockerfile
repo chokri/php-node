@@ -4,6 +4,8 @@ FROM ubuntu:18.04
 RUN export LC_ALL=C.UTF-8
 # this disable front interactivity
 ENV DEBIAN_FRONTEND noninteractive
+# Supporting Panther Unit Test
+ENV PANTHER_NO_SANDBOX 1 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # ⚙️  Here we can udate all sys packages that we need
