@@ -23,7 +23,8 @@ RUN apt-get install -yqq \
     libjpeg-dev \
     libpng-dev \
     libpng16-16 \
-    zip
+    zip \
+    libnss3
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo    
 
