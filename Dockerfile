@@ -28,7 +28,7 @@ RUN apt-get install -yqq \
     libpng16-16 \
     zip \
     libnss3 \
-    chromium
+    chromium-browser
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo    
 
