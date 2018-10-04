@@ -1,9 +1,12 @@
 FROM ubuntu:18.04
 
+# Is my case I use UTF-8 👷
 RUN export LC_ALL=C.UTF-8
+# this disable front interactivity
 ENV DEBIAN_FRONTEND noninteractive
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
+# ⚙️  Here we can udate all sys packages that we need
 RUN apt-get update
 RUN apt-get install -yqq \
     sudo \
@@ -27,7 +30,7 @@ RUN apt-get install -yqq \
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo    
 
-# PHP
+# ⚡️ All I need to test my PHP Frameworks (CakePHP & Symfony)
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.2
 RUN apt-get install -yqq \
     php7.2-curl \
@@ -49,20 +52,20 @@ RUN apt-get install -yqq \
     php-memcached
 RUN command -v php
 
-# Composer
+# ⚡️ Composer
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer && \
     chmod +x /usr/local/bin/composer && \
     composer self-update --preview
 RUN command -v composer
 
-# PHPUnit
+# ⚡️ PHPUnit
 RUN wget https://phar.phpunit.de/phpunit.phar
 RUN chmod +x phpunit.phar
 RUN mv phpunit.phar /usr/local/bin/phpunit
 RUN command -v phpunit
 
-# Node.js
+# ⚡️ Node.js
 RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN apt-get install nodejs -y
